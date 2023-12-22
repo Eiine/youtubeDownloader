@@ -4,18 +4,36 @@
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="style.css">
     <title>Hello World!</title>
   </head>
   <body>
-    
+    <div class="title">YoutubeDownloader</div>
+    <div class="form">
+      <div class="item">
     <label for="">Link download</label>
     <input type="text" id="download">
+      </div>
+    <div class="item">
+      <label for="">Quality download</label>
+    <select id="quality">
+      <option value="480">Low</option>
+      <option value="720">Medium</option>
+      <option value="1080">higth</option>
+      <option value="only-audio">Only audio</option>
+    </select>
+  </div>
+<div class="item">
     <label for="">Download directorio</label>
     <input type="text" id="folder"> <button id="boton" >select folder</button>
     <button id="open-folder">open folder</button>
-    <button id="download-button">Download</button>
+  </div>
 
-    <div id="conten-progress" value="0">
+  <div class="item download">
+    <button id="download-button" class="button-download">Download</button>
+  </div>
+
+    <div id="conten-progress" class="content" value="0">
     
     </div>
   </body>

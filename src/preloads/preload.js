@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const download_button=document.getElementById("download-button")
   const cont_progres=document.getElementById("conten-progress")
   const openFolder=document.getElementById("open-folder")
+  const option= document.getElementById("quality")
   window.ipcRenderer=ipcRenderer
   console.log(boton);
   boton.addEventListener("click", () => {
@@ -22,6 +23,11 @@ window.addEventListener('DOMContentLoaded', () => {
   ipcRenderer.on("returnDirectori",(e,data)=>{
     folder.value=data
   })
+  //recibe la ruta gurdada con el destino de descarga
+  ipcRenderer.on("config-info",(e,dest)=>{
+    let folderDestini= JSON.parse(dest)
+    folder.value=folderDestini.destination
+  })
 
   //copiar contenido de portapapeles en input
 
@@ -33,9 +39,12 @@ link.addEventListener("click",async()=>{
 })
 
 //Descarga de video
-//corregir el estado de las barras de progreso debe ser independiente
 download_button.addEventListener("click",()=>{
-  ipcRenderer.send("start-donwload",{folder:folder.value, link:link.value})
+  if(!folder.value || !link.value){
+    return console.log("se requiere un link para iniciar la descarga");
+  }
+  ipcRenderer.send("start-donwload",{folder:folder.value, link:link.value, quality:option.value})
+  //corregir la barra de progreso para que de una idea de descarga terminada
   link.value=""
   let num_contain=parseInt(cont_progres.getAttribute("value"))
   cont_progres.innerHTML+=`<progress id="progress-${num_contain}" max="100" value=""></progress>`
