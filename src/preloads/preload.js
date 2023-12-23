@@ -46,30 +46,21 @@ download_button.addEventListener("click",()=>{
   ipcRenderer.send("start-donwload",{folder:folder.value, link:link.value, quality:option.value})
   //corregir la barra de progreso para que de una idea de descarga terminada
   link.value=""
-  let num_contain=parseInt(cont_progres.getAttribute("value"))
-  cont_progres.innerHTML+=`<progress id="progress-${num_contain}" max="100" value=""></progress>`
-  const progrres= document.getElementById(`progress-${num_contain}`)
-  progrres.removeAttribute("value")
-  
-  let progress_bar=setInterval(() => {
-    let actual=parseInt(progrres.value)
-    if (actual!==80) {
-      let suma= actual + 5
-    let retorna= suma.toString()
-    progrres.value=retorna
-    }else{
-      clearInterval(progress_bar)  
-    }
-    
-  }, 3000);
-  
-  num_contain++
-  cont_progres.setAttribute("value", num_contain.toString())
+  ipcRenderer.on("send-title",(e,title)=>{
+    console.log(title);
+    cont_progres.innerHTML+=`<h2 class="item-video">${title}</h2>`
+  })
 
   ipcRenderer.on("final-progres",()=>{
-  clearInterval(progress_bar)
-  progrres.value="100"
-})
+  let items=document.querySelector(".item-video")
+  
+ 
+    if (!items.classList.contains("final")) {
+      items.classList.add("final");
+    }
+  
+  });
+  
 })
 
 openFolder.addEventListener("click",()=>{

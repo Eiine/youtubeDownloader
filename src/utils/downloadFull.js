@@ -15,11 +15,12 @@ const convert=async(url,output,event,quality)=>{
       
      }
   
-       let data= await youtube_dl(url,option) 
+       let data= await youtube_dl(url,{dumpSingleJson: true,}) 
       .then(async(output) => {
        
-        let title= await youtube_dl(url,{dumpSingleJson: true,})
-        return {status:true, title:title.title}
+        event.sender.send("send-title",output.title)
+         await youtube_dl(url,option)
+        return {status:true, title:output.title}
         })
       .catch((error) => {
         console.error("Error al descargar el video: Si estas utilizando una url de mix youtube, este programa no es compatible o por el contrario una url de otro sitio no todos lo son con esta app");
