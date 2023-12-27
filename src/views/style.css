@@ -35,7 +35,7 @@ body{
 }
 
 .content{
-    display: flex;
+        
     border:solid black 3px;
     height: 230px;
     width: 700px;
@@ -55,4 +55,9 @@ body{
 }
 .final{
     color:green
+}
+
+.item-video{
+    display: block;
+    color: blue;
 }

@@ -46,21 +46,23 @@ download_button.addEventListener("click",()=>{
   ipcRenderer.send("start-donwload",{folder:folder.value, link:link.value, quality:option.value})
   //corregir la barra de progreso para que de una idea de descarga terminada
   link.value=""
-  ipcRenderer.on("send-title",(e,title)=>{
-    console.log(title);
-    cont_progres.innerHTML+=`<h2 class="item-video">${title}</h2>`
-  })
-
-  ipcRenderer.on("final-progres",()=>{
-  let items=document.querySelector(".item-video")
   
- 
-    if (!items.classList.contains("final")) {
-      items.classList.add("final");
-    }
+})
+
+ipcRenderer.on("final-progres",()=>{
+  let items=document.querySelectorAll(".item-video")
+  console.log(items);
+ items.forEach(item=>{
+  if (!item.classList.contains("final")) {
+    item.classList.remove("item-video");
+    item.classList.add("final");
+  }
+ })
   
   });
-  
+
+ipcRenderer.on("send-title",(e,title)=>{
+  cont_progres.insertAdjacentHTML('beforeend', `<p class="item-video">${title}</p>`);
 })
 
 openFolder.addEventListener("click",()=>{
