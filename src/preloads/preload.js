@@ -65,6 +65,10 @@ ipcRenderer.on("send-title",(e,title)=>{
   cont_progres.insertAdjacentHTML('beforeend', `<p class="item-video">${title}</p>`);
 })
 
+ipcRenderer.on("error",(e,err)=>{
+  console.log(err);
+})
+
 openFolder.addEventListener("click",()=>{
   ipcRenderer.send("openFolder", folder.value)
 })

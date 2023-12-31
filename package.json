@@ -1,5 +1,5 @@
 {
-  "name": "prueba",
+  "name": "youtubedownload",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
@@ -22,10 +22,10 @@
     "tailwindcss": "^3.4.0"
   },
   "build": {
-    "appId": "com.tuempresa.tuapp",
-    "productName": "NombreDeTuApp",
+    "appId": "com.example.my-electron-app",
+    "asar": false,
     "directories": {
-      "output": "dist"
+      "output": "out"
     },
     "files": [
       "dist/**/*",
@@ -35,7 +35,8 @@
       "package.json"
     ],
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "src/imagen/yd.png"
     }
   }
 }
