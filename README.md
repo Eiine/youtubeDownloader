@@ -1,6 +1,7 @@
-# Nombre del Proyecto
+# Youtube Download
 
-Breve descripción o resumen del proyecto.
+Este proyecto es una implementación de las librerías youtube-dl-exec para la descarga y fluent-ffmpeg para realizar conversiones. El mismo permite crear un ejecutable para el sistema Windows que puede realizar descargas de videos teniendo en cuenta la calidad que desee el usuario. Este proyecto está montado sobre Electron.js y es una práctica de aprendizaje autodidacta.
+
 
 ## Tabla de Contenidos
 
@@ -24,7 +25,7 @@ npm install
 ## uso
 
 ```bash
-npm start //Estpo ejecutara el proyecto en local
+npm start //Esto ejecutara el proyecto en local
 npm run pack // Genera el ejecutable dentro de out
 npm run dist // Genera el ejecutable dentro de out 
 ```
