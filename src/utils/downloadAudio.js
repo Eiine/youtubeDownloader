@@ -27,7 +27,7 @@ const downloadAudio=async(url,output,event,quality)=>{
     })
     
     // Cambiar el contenido de dir por rootDir en abiente desarrollo
-    const dir=path.join(rootDri,"..","..")
+    const dir= rootDri //path.join(rootDri,"..","..")
     const fileRead=fs.readdirSync(dir)
         const Ppalabra= data.title.split(" ")[0]
         const file= fileRead.filter(file=> file.includes(Ppalabra))
