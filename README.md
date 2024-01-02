@@ -14,7 +14,7 @@ Este proyecto es una implementación de las librerías youtube-dl-exec para la d
 
 Para la instalacion del proyecto deber descargar por separado el binario de ffmpeg de este link [https://www.videohelp.com/download/ffmpeg-6.1.1-full_build.7z]
 
-Una ves descargado debes descomprimirlo y crear en dentro de src/utils una carpeta llamda ffmpeg y deberas colocar el archivo que sencuentra en la carpeta bin llamado ffmpeg.exe dentro de la carpeta del mismo nombre
+Una ves descargado debes descomprimirlo y crear  dentro de src/utils una carpeta llamda ffmpeg y deberas colocar el archivo que sencuentra en la carpeta bin llamado ffmpeg.exe dentro de la carpeta del mismo nombre
 
 ```bash
 git clone https://github.com/Eiine/youtubeDownloader.git
