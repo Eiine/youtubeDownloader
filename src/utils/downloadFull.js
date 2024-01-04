@@ -43,7 +43,7 @@ const convert=async(url,output,event,quality)=>{
             file.map((element)=>{
               fs.unlinkSync(path.join(dir, element))
             })
-            event.sender.send("final-progres","final")
+            event.sender.send("final-progres",data.title)
           })
           .on("error", (err) => {
             console.error(`Error en la conversión para ${file}:`, err);

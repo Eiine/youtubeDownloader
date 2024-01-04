@@ -49,20 +49,44 @@ download_button.addEventListener("click",()=>{
   
 })
 
-ipcRenderer.on("final-progres",()=>{
+ipcRenderer.on("final-progres",(e,title)=>{
   let items=document.querySelectorAll(".item-video")
-  console.log(items);
+  console.log(title);
  items.forEach(item=>{
-  if (!item.classList.contains("final")) {
+  if (item.textContent == title) {
     item.classList.remove("item-video");
     item.classList.add("final");
+    item.children[0].value=100
+    
   }
  })
   
   });
-
+  let contador=0
 ipcRenderer.on("send-title",(e,title)=>{
-  cont_progres.insertAdjacentHTML('beforeend', `<p class="item-video">${title}</p>`);
+  //cont_progres.insertAdjacentHTML('beforeend', `<p class="item-video">${title}</p>`);
+  let element= document.createElement("p")
+  element.setAttribute("class","item-video")
+  element.innerText=title
+  cont_progres.appendChild(element)
+
+  let contador2=0    
+  let bar= document.createElement("progress")
+  bar.setAttribute("max","100")
+  bar.setAttribute("value","0")
+  bar.setAttribute("id",contador)
+  element.appendChild(bar)
+  
+
+  let inteval=setInterval(() => {
+      if(bar.value < 80){
+      bar.value=contador2
+      contador2 += 2
+      return
+      }
+     clearInterval(inteval)
+  }, 3000);
+
 })
 
 ipcRenderer.on("error",(e,err)=>{
