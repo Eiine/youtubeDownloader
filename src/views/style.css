@@ -54,10 +54,16 @@ body{
     padding: 5px; 
 }
 .final{
-    color:green
+    color:green;
+    
 }
 
 .item-video{
-    display: block;
+    display: flex;
     color: blue;
+    gap: 30px;
+}
+.progress{
+    padding: 10px;
+    align-items: end;
 }

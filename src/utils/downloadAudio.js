@@ -11,6 +11,7 @@ const downloadAudio=async(url,output,event,quality)=>{
 
   //extrae el titulo primero
   let title= await youtube_dl(url,{dumpSingleJson: true,})
+
   event.sender.send("send-title",title.title)
 
     option= {
@@ -27,11 +28,11 @@ const downloadAudio=async(url,output,event,quality)=>{
     })
     
     // Cambiar el contenido de dir por rootDir en abiente desarrollo
-    const dir= rootDri //path.join(rootDri,"..","..")
+    const dir= path.join(rootDri,"..","..")//rootDir
     const fileRead=fs.readdirSync(dir)
-        const Ppalabra= data.title.split(" ")[0]
-        const file= fileRead.filter(file=> file.includes(Ppalabra))
-    
+        const Ppalabra= data.title.split(" ")
+        const file= fileRead.filter(file=> file.includes(Ppalabra[0])||file.includes(Ppalabra[1]))
+  
     ffmpeg(path.join(dir, file[0]))
     .audioCodec("libmp3lame") // Puedes cambiar el códec según tus necesidades
     .toFormat("mp3")
@@ -41,7 +42,7 @@ const downloadAudio=async(url,output,event,quality)=>{
     file.map((element)=>{
         fs.unlinkSync(path.join(dir, element))
       })
-      event.sender.send("final-progres","final")
+      event.sender.send("final-progres",data.title)
   })
   .on("error", (err) => {
     console.error("Error al extraer audio:", err);

@@ -29,7 +29,7 @@ const convert=async(url,output,event,quality)=>{
     
      if(data.status== true){
           // Cambiar el contenido de dir por rootDir en abiente desarrollo
-          const dir= rootDri //path.join(rootDri,"..","..")
+          const dir= path.join(rootDri,"..","..")//rootDir
           const fileRead=fs.readdirSync(dir)
           const Ppalabra= data.title.split(" ")[0]
           const file= fileRead.filter(file=> file.includes(Ppalabra)) 

@@ -54,8 +54,7 @@ ipcRenderer.on("final-progres",(e,title)=>{
   console.log(title);
  items.forEach(item=>{
   if (item.textContent == title) {
-    item.classList.remove("item-video");
-    item.classList.add("final");
+    
     item.children[0].value=100
     
   }
@@ -75,6 +74,7 @@ ipcRenderer.on("send-title",(e,title)=>{
   bar.setAttribute("max","100")
   bar.setAttribute("value","0")
   bar.setAttribute("id",contador)
+  bar.setAttribute("class", "progress")
   element.appendChild(bar)
   
 
