@@ -31,8 +31,8 @@ const convert=async(url,output,event,quality)=>{
           // Cambiar el contenido de dir por rootDir en abiente desarrollo
           const dir= path.join(rootDri,"..","..")//rootDir
           const fileRead=fs.readdirSync(dir)
-          const Ppalabra= data.title.split(" ")[0]
-          const file= fileRead.filter(file=> file.includes(Ppalabra)) 
+          const Ppalabra= data.title.split(" ")
+          const file= fileRead.filter(file=> file.includes(Ppalabra[0]) ||file.includes(Ppalabra[1])||file.includes(Ppalabra[2])||file.includes(Ppalabra[3])) 
         ffmpeg()
         .input(path.join(dir, file[0]))
         .input(path.join(dir, file[1]))
