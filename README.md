@@ -27,7 +27,7 @@ npm install
 ```bash
 npm start //Esto ejecutara el proyecto en local
 npm run pack // Genera el ejecutable dentro de out
-npm run dist // Genera el ejecutable dentro de out 
+npm run dist // Genera el ejecutable dentro de out // instalador empaquetado
 ```
 
 
