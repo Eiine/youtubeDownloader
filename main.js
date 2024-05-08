@@ -19,7 +19,7 @@ const createWindow = () => {
       }
     })
     
-    win.setMenu(null)
+   
     win.loadFile(path.join(__dirname, "/src","/views", "index.html"))
 
     const dest = fs.readFileSync(path.join(alias, "/src", "config", "config.json"), "utf-8");

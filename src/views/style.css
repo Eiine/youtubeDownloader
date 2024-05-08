@@ -42,6 +42,7 @@ body{
     justify-items: center;
     margin-left: 3px;
     margin-right: 3px;
+    overflow: auto;
     
 }
 .title{

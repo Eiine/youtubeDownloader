@@ -32,7 +32,8 @@ const convert=async(url,output,event,quality)=>{
           const dir= path.join(rootDri,"..","..")//rootDir
           const fileRead=fs.readdirSync(dir)
           const Ppalabra= data.title.split(" ")[0]
-          const file= fileRead.filter(file=> file.includes(Ppalabra)) 
+          const file= fileRead.filter(file=> file.includes(Ppalabra[0])|| file.includes(Ppalabra[1])) 
+          
         ffmpeg()
         .input(path.join(dir, file[0]))
         .input(path.join(dir, file[1]))
@@ -41,7 +42,10 @@ const convert=async(url,output,event,quality)=>{
           .on("end", () => {
             console.log(`Conversión completa para ${file}`);
             file.map((element)=>{
-              fs.unlinkSync(path.join(dir, element))
+              if(!element.includes(".dll")){
+                fs.unlinkSync(path.join(dir, element))
+              }
+              // corregir error en la eliminacion de archivos vercion prod
             })
             event.sender.send("final-progres",data.title)
           })
